@@ -25,3 +25,5 @@ override.tf.json
 #исключить файлы:
 .terraformrc
 terraform.rc
+
+# 101121 Новая строчка
