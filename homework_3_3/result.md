@@ -26,8 +26,36 @@
     /usr/sbin/opensnoop-bpfcc
     ```
     На какие файлы вы увидели вызовы группы `open` за первую секунду работы утилиты? Воспользуйтесь пакетом `bpfcc-tools` для Ubuntu 20.04. Дополнительные [сведения по установке](https://github.com/iovisor/bcc/blob/master/INSTALL.md).
+Ответ: насколько понял задание:
+ sudo opensnoop-bpfcc
+PID    COMM               FD ERR PATH
+572    irqbalance          6   0 /proc/interrupts
+572    irqbalance          6   0 /proc/stat
+572    irqbalance          6   0 /proc/irq/20/smp_affinity
+572    irqbalance          6   0 /proc/irq/0/smp_affinity
+572    irqbalance          6   0 /proc/irq/1/smp_affinity
+572    irqbalance          6   0 /proc/irq/8/smp_affinity
+572    irqbalance          6   0 /proc/irq/12/smp_affinity
+572    irqbalance          6   0 /proc/irq/14/smp_affinity
+572    irqbalance          6   0 /proc/irq/15/smp_affinity
+751    vminfo              5   0 /var/run/utmp
+565    dbus-daemon        -1   2 /usr/local/share/dbus-1/system-services
+565    dbus-daemon        18   0 /usr/share/dbus-1/system-services
+565    dbus-daemon        -1   2 /lib/dbus-1/system-services
+565    dbus-daemon        18   0 /var/lib/snapd/dbus-1/system-services/
+751    vminfo              5   0 /var/run/utmp
+565    dbus-daemon        -1   2 /usr/local/share/dbus-1/system-services
+565    dbus-daemon        18   0 /usr/share/dbus-1/system-services
+565    dbus-daemon        -1   2 /lib/dbus-1/system-services
+565    dbus-daemon        18   0 /var/lib/snapd/dbus-1/system-services/
+
 
 1. Какой системный вызов использует `uname -a`? Приведите цитату из man по этому системному вызову, где описывается альтернативное местоположение в `/proc`, где можно узнать версию ядра и релиз ОС.
+Ответ: используется системный вызов uname.
+Цитата: 
+     Part of the utsname information is also accessible  via  /proc/sys/ker‐
+       nel/{ostype, hostname, osrelease, version, domainname}.
+(Часть информации так же доступна в /proc/sys/ker‐nel)
 
 1. Чем отличается последовательность команд через `;` и через `&&` в bash? Например:
     ```bash
