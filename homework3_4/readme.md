@@ -14,6 +14,7 @@ EnvironmentFile=/etc/default/node_exporter
 
 [Install]
 WantedBy=default.target
+
 vagrant@vagrant:~$ sudo systemctl status node_exporter
 ###### 
 ● node_exporter.service - Node Exporter
