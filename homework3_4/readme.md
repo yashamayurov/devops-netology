@@ -3,7 +3,7 @@
 предусмотрите возможность добавления опций к запускаемому процессу через внешний файл (посмотрите, например, на systemctl cat cron),
 удостоверьтесь, что с помощью systemctl процесс корректно стартует, завершается, а после перезагрузки автоматически поднимается.
 Сервис установлен.
-# Конфигурационный файл сервиса:
+##### Конфигурационный файл сервиса:
 vagrant@vagrant:~$ sudo nano /etc/systemd/system/node_exporter.service
 [Unit]
 Description=Node Exporter
@@ -15,7 +15,7 @@ EnvironmentFile=/etc/default/node_exporter
 [Install]
 WantedBy=default.target
 vagrant@vagrant:~$ sudo systemctl status node_exporter
-# 
+###### 
 ● node_exporter.service - Node Exporter
      Loaded: loaded (/etc/systemd/system/node_exporter.service; enabled; vendor preset: enabled)
      Active: active (running) since Sat 2021-12-04 18:39:43 UTC; 6min ago
@@ -36,7 +36,7 @@ Dec 04 18:39:43 vagrant node_exporter[1410]: ts=2021-12-04T18:39:43.862Z caller=
 Dec 04 18:39:43 vagrant node_exporter[1410]: ts=2021-12-04T18:39:43.862Z caller=node_exporter.go:199 level=info msg="Listening on" address=:9100
 Dec 04 18:39:43 vagrant node_exporter[1410]: ts=2021-12-04T18:39:43.862Z caller=tls_config.go:195 level=info msg="TLS is disabled." http2=false
 vagrant@vagrant:~$ sudo reboot
-# Перезагрузка
+##### Перезагрузка
 vagrant@vagrant:~$ sudo systemctl status node_exporter
 ● node_exporter.service - Node Exporter
      Loaded: loaded (/etc/systemd/system/node_exporter.service; enabled; vendor preset: enabled)
