@@ -79,3 +79,19 @@ node_network_receive_bytes_total{device="eth0"} 920622
 node_network_receive_errs_total{device="eth0"} 0
 node_network_transmit_bytes_total{device="eth0"} 23612
 node_network_transmit_errs_total{device="eth0"} 0
+
+### 3. Установите в свою виртуальную машину Netdata. Воспользуйтесь готовыми пакетами для установки (sudo apt install -y netdata). После успешной установки:
+#### в конфигурационном файле /etc/netdata/netdata.conf в секции [web] замените значение с localhost на bind to = 0.0.0.0
+открываю файл 
+vagrant@vagrant:~$ sudo nano /etc/netdata/netdata.conf
+Вижу, что секция [WEB] отсутствует, согласно комментарию загружаю последнюю версию командой:
+wget -O /etc/netdata/netdata.conf http://localhost:19999/netdata.conf
+vagrant@vagrant:~$ sudo nano /etc/netdata/netdata.conf
+Секция [WEB] появилась отредатировал.
+Отредактировал vagrantfile
+Перешел на вкладку Windows Terminal открытую в папке где находться виртуальная машина:
+vagrant@vagrant:~$ sudo nano /etc/netdata/netdata.conf
+Виртуальая машина перезагрузилась. Открыл браузер ввел в адресной строке http://localhost:19999/. Открылось отображение графиков со значениям метрик.
+
+
+
