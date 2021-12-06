@@ -135,14 +135,25 @@ root@vagrant: ~# bg
 [1]+ sleep 1h &
 
 root@vagrant: ~# ps -e | grep sleep
+
    1176 pts/0    00:00:00 sleep
+   
 root@vagrant: ~# sudo nsenter --target 1176 --pid --mount --no-fork
+
 root@vagrant:/# ps
+
     PID TTY          TIME CMD
-   1165 pts/0    00:00:00 sudo \n
+    
+   1165 pts/0    00:00:00 sudo 
+   
    1167 pts/0    00:00:00 bash
+   
    1176 pts/0    00:00:00 sleep
+   
    1183 pts/0    00:00:00 sudo
+   
    1184 pts/0    00:00:00 bash
+   
    1193 pts/0    00:00:00 ps
+   
 root@vagrant:/#
