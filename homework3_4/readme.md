@@ -99,5 +99,10 @@ vagrant@vagrant:~ $ sudo nano /etc/netdata/netdata.conf
 
 Виртуальая машина перезагрузилась. Открыл браузер ввел в адресной строке http://localhost:19999/. Открылось отображение графиков со значениям метрик.
 
+### 4. Можно ли по выводу dmesg понять, осознает ли ОС, что загружена не на настоящем оборудовании, а на системе виртуализации?
+Для этого можно посмотреть информацию DMI (Desktop Management Interface) — программный интерфейс (API), позволяющий программному обеспечению собирать данные о характеристиках аппаратуры компьютера:
+vagrant@vagrant:~ $ dmesg | grep DMI
+[    0.000000] DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[    0.296648] ACPI: Added _OSI(Linux-Lenovo-NV-HDMI-Audio)
 
-
+Строка innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006 свидетельсвует о том, что ОС запущена на гипервизоре VirtualBox.
