@@ -105,4 +105,5 @@ vagrant@vagrant:~ $ dmesg | grep DMI
 [    0.000000] DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
 [    0.296648] ACPI: Added _OSI(Linux-Lenovo-NV-HDMI-Audio)
 
+
 Строка innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006 свидетельсвует о том, что ОС запущена на гипервизоре VirtualBox.
