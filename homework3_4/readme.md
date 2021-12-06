@@ -108,3 +108,9 @@ vagrant@vagrant:~ $ dmesg | grep DMI
 [    0.296648] ACPI: Added _OSI(Linux-Lenovo-NV-HDMI-Audio)
 
 Строка innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006 свидетельсвует о том, что ОС запущена на гипервизоре VirtualBox.
+
+### 5. Как настроен sysctl fs.nr_open на системе по-умолчанию? Узнайте, что означает этот параметр. Какой другой существующий лимит не позволит достичь такого числа (ulimit --help)?
+Максисмальное количество открытах дескрипторов.
+vagrant@vagrant:~$ /sbin/sysctl -n fs.nr_open
+1048576
+
