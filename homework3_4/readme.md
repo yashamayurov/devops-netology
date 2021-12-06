@@ -86,11 +86,17 @@ node_network_transmit_errs_total{device="eth0"} 0
 vagrant@vagrant:~ $ sudo nano /etc/netdata/netdata.conf
 Вижу, что секция [WEB] отсутствует, согласно комментарию загружаю последнюю версию командой:
 wget -O /etc/netdata/netdata.conf http://localhost:19999/netdata.conf
+
 vagrant@vagrant:~ $ sudo nano /etc/netdata/netdata.conf
+
 Секция [WEB] появилась отредатировал.
+
 Отредактировал vagrantfile
+
 Перешел на вкладку Windows Terminal открытую в папке где находться виртуальная машина:
+
 vagrant@vagrant:~ $ sudo nano /etc/netdata/netdata.conf
+
 Виртуальая машина перезагрузилась. Открыл браузер ввел в адресной строке http://localhost:19999/. Открылось отображение графиков со значениям метрик.
 
 
