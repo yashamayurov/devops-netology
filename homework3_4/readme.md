@@ -116,10 +116,30 @@ vagrant@vagrant:~$ /sbin/sysctl -n fs.nr_open
 1048576
 
 Можно изменить при помощи команд:
-vagrant@vagrant:~$ ulimit -Sn
+vagrant@vagrant:~ $ ulimit -Sn
 1024
 мягкий лимит на пользователя (Мягкий предел - это то, что фактически применяется для сеанса или процесса)
-vagrant@vagrant:~$ ulimit -Hn
+vagrant@vagrant:~ $ ulimit -Hn
 1048576
 
 жесткий лимит на пользователя (Жесткий предел - это потолок для мягкого ограничения.)
+
+### 6. Запустите любой долгоживущий процесс (не ls, который отработает мгновенно, а, например, sleep 1h) в отдельном неймспейсе процессов; покажите, что ваш процесс работает под PID 1 через nsenter. Для простоты работайте в данном задании под root (sudo -i). Под обычным пользователем требуются дополнительные опции (--map-root-user) и т.д.
+vagrant@vagrant:~$ sudo -i
+root@vagrant:~# sleep 1h
+^Z
+[1]+  Stopped                 sleep 1h
+root@vagrant: ~# bg
+[1]+ sleep 1h &
+root@vagrant: ~# ps -e | grep sleep
+   1176 pts/0    00:00:00 sleep
+root@vagrant: ~# sudo nsenter --target 1176 --pid --mount --no-fork
+root@vagrant:/# ps
+    PID TTY          TIME CMD
+   1165 pts/0    00:00:00 sudo
+   1167 pts/0    00:00:00 bash
+   1176 pts/0    00:00:00 sleep
+   1183 pts/0    00:00:00 sudo
+   1184 pts/0    00:00:00 bash
+   1193 pts/0    00:00:00 ps
+root@vagrant:/#
