@@ -128,9 +128,12 @@ vagrant@vagrant:~ $ ulimit -Hn
 vagrant@vagrant:~ $ sudo -i
 root@vagrant:~# sleep 1h
 ^Z
+
 [1]+  Stopped                 sleep 1h
 root@vagrant: ~# bg
+
 [1]+ sleep 1h &
+
 root@vagrant: ~# ps -e | grep sleep
    1176 pts/0    00:00:00 sleep
 root@vagrant: ~# sudo nsenter --target 1176 --pid --mount --no-fork
