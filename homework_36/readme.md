@@ -30,3 +30,12 @@ Set-Cookie: prov=659601c4-ebdc-08ff-260f-6fecaa84eadc; domain=.stackoverflow.com
 Connection closed by foreign host.
 ```
 В ответ возвращается код 301, означающий что страница перемещена по адресу указанным в поле: https://stackoverflow.com/questions
+### 2. Повторите задание 1 в браузере, используя консоль разработчика F12
+##### найдите первый ответ HTTP сервера, откройте вкладку Headers
+##### укажите в ответе полученный HTTP код.
+Status Code: 307 Internal Redirect
+##### проверьте время загрузки страницы, какой запрос обрабатывался дольше всего?
+https://stackoverflow.com/  351 мс
+##### приложите скриншот консоли браузера в ответ.
+![image](https://user-images.githubusercontent.com/64410504/145011332-f1c813b7-282a-499f-aae7-f79e766c5f13.png)
+
