@@ -4,6 +4,7 @@
 удостоверьтесь, что с помощью systemctl процесс корректно стартует, завершается, а после перезагрузки автоматически поднимается.
 Сервис установлен.
 ##### Конфигурационный файл сервиса:
+'''
 vagrant@vagrant:~$ sudo nano /etc/systemd/system/node_exporter.service
 [Unit]
 Description=Node Exporter
