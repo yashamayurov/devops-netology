@@ -4,7 +4,7 @@
 удостоверьтесь, что с помощью systemctl процесс корректно стартует, завершается, а после перезагрузки автоматически поднимается.
 Сервис установлен.
 ##### Конфигурационный файл сервиса:
-'''
+```
 vagrant@vagrant:~$ sudo nano /etc/systemd/system/node_exporter.service
 [Unit]
 Description=Node Exporter
@@ -59,7 +59,7 @@ Dec 04 18:48:04 vagrant node_exporter[584]: ts=2021-12-04T18:48:04.337Z caller=n
 Dec 04 18:48:04 vagrant node_exporter[584]: ts=2021-12-04T18:48:04.337Z caller=node_exporter.go:115 level=info collector=zfs
 Dec 04 18:48:04 vagrant node_exporter[584]: ts=2021-12-04T18:48:04.338Z caller=node_exporter.go:199 level=info msg="Listening on" address=:9100
 Dec 04 18:48:04 vagrant node_exporter[584]: ts=2021-12-04T18:48:04.340Z caller=tls_config.go:195 level=info msg="TLS is disabled." http2=false
-
+```
 ### 2. Ознакомьтесь с опциями node_exporter и выводом /metrics по-умолчанию. Приведите несколько опций, которые вы бы выбрали для базового мониторинга хоста по CPU, памяти, диску и сети.
 
 #### CPU
