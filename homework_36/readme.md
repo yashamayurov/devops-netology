@@ -119,3 +119,40 @@ Keys:  Help   Display mode   Restart statistics   Order of fields   quit
 
 ```
 Наибольшая СРЕДНЯЯ(AVG) задержка на узле 8. AS15169  142.251.51.187 
+
+### 7. Какие DNS сервера отвечают за доменное имя dns.google? Какие A записи? воспользуйтесь утилитой dig
+
+Просмотрим NS-записи домена dns.google:
+
+```
+vagrant@vagrant:~$ dig dns.google ns
+
+; <<>> DiG 9.16.1-Ubuntu <<>> dns.google ns
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9113
+;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;dns.google.                    IN      NS
+
+;; ANSWER SECTION:
+dns.google.             21599   IN      NS      ns4.zdns.google.
+dns.google.             21599   IN      NS      ns1.zdns.google.
+dns.google.             21599   IN      NS      ns2.zdns.google.
+dns.google.             21599   IN      NS      ns3.zdns.google.
+
+;; Query time: 264 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Tue Dec 07 12:15:09 UTC 2021
+;; MSG SIZE  rcvd: 116
+```
+За домен dns.google отвечают сервера:
+```
+dns.google.             21599   IN      NS      ns4.zdns.google.
+dns.google.             21599   IN      NS      ns1.zdns.google.
+dns.google.             21599   IN      NS      ns2.zdns.google.
+dns.google.             21599   IN      NS      ns3.zdns.google.
+```
