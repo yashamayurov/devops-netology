@@ -13,9 +13,13 @@ Description=Node Exporter
 ExecStart=/usr/local/bin/node_exporter
 EnvironmentFile=/etc/default/node_exporter
 
+# Опции запуска возможно передать при помощи файла, указаннгого в параметре EnvironmentFile
+
 [Install]
 WantedBy=default.target
+```
 
+```
 vagrant@vagrant:~$ sudo systemctl status node_exporter
 ###### 
 ● node_exporter.service - Node Exporter
