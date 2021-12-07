@@ -39,3 +39,26 @@ https://stackoverflow.com/  351 мс
 ##### приложите скриншот консоли браузера в ответ.
 ![image](https://user-images.githubusercontent.com/64410504/145011332-f1c813b7-282a-499f-aae7-f79e766c5f13.png)
 
+### 3. Какой IP адрес у вас в интернете?
+83.171.107.190
+### 4. Какому провайдеру принадлежит ваш IP адрес? Какой автономной системе AS? Воспользуйтесь утилитой whois
+```
+vagrant@vagrant:~$ whois -h whois.radb.net 83.171.107.190
+route:          83.171.96.0/19
+descr:          Rostelecom networks
+origin:         AS12389
+notify:         ripe@rt.ru
+mnt-by:         ROSTELECOM-MNT
+created:        2018-10-31T08:06:58Z
+last-modified:  2018-10-31T08:06:58Z
+source:         RIPE
+remarks:        ****************************
+remarks:        * THIS OBJECT IS MODIFIED
+remarks:        * Please note that all data that is generally regarded as personal
+remarks:        * data has been removed from this object.
+remarks:        * To view the original object, please query the RIPE Database at:
+remarks:        * http://www.ripe.net/whois
+remarks:        ****************************
+```
+Провайдер - Rostelecom
+Автономная система AS12389
