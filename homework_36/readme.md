@@ -156,3 +156,28 @@ dns.google.             21599   IN      NS      ns1.zdns.google.
 dns.google.             21599   IN      NS      ns2.zdns.google.
 dns.google.             21599   IN      NS      ns3.zdns.google.
 ```
+### 8. Проверьте PTR записи для IP адресов из задания 7. Какое доменное имя привязано к IP? воспользуйтесь утилитой dig
+
+```
+vagrant@vagrant:~$ dig -x 8.8.8.8
+
+; <<>> DiG 9.16.1-Ubuntu <<>> -x 8.8.8.8
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62677
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;8.8.8.8.in-addr.arpa.          IN      PTR
+
+;; ANSWER SECTION:
+8.8.8.8.in-addr.arpa.   12125   IN      PTR     dns.google.
+
+;; Query time: 4 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Tue Dec 07 12:22:55 UTC 2021
+;; MSG SIZE  rcvd: 73
+
+```
