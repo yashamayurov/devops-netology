@@ -134,3 +134,11 @@ mdadm: chunk size defaults to 512K
 mdadm: Defaulting to version 1.2 metadata
 mdadm: array /dev/md1 started.
 ```
+
+### 8. Создайте 2 независимых PV на получившихся md-устройствах.
+```
+root@vagrant:~# pvcreate /dev/md0
+  Physical volume "/dev/md0" successfully created.
+root@vagrant:~# pvcreate /dev/md1
+  Physical volume "/dev/md1" successfully created.
+```
