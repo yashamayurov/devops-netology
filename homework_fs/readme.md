@@ -57,6 +57,8 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 ```
 ### 5. Используя sfdisk, перенесите данную таблицу разделов на второй диск.
+Записывает таблицу разделов в файл, потом из файла на неразмеченный диск:
+
 ```
 vagrant@vagrant:~$ sudo sfdisk -d /dev/sdb > p_table
 vagrant@vagrant:~$ sudo sfdisk /dev/sdc < p_table
