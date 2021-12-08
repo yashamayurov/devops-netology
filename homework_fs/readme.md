@@ -216,3 +216,19 @@ root@vagrant:~# pvmove -i1 /dev/md0 /dev/md1
 root@vagrant:~# mdadm /dev/md0 --fail /dev/sdb1
 mdadm: set /dev/sdb1 faulty in /dev/md0
 ### 18. Подтвердите выводом dmesg, что RAID1 работает в деградированном состоянии.
+root@vagrant:~# dmesg | grep raid1
+[11159.950857] md/raid1:md0: not clean -- starting background reconstruction
+[11159.950858] md/raid1:md0: active with 2 out of 2 mirrors
+[18120.940682] md/raid1:md0: Disk failure on sdb1, disabling device.
+               md/raid1:md0: Operation continuing on 1 devices.
+### 19.Протестируйте целостность файла, несмотря на "сбойный" диск он должен продолжать быть доступен/
+root@vagrant:~# gzip -t /tmp/new/test.gz
+root@vagrant:~# echo $?
+0
+### 20.Погасите тестовый хост, vagrant destroy.
+```
+PS F:\vagrant> vagrant destroy
+    default: Are you sure you want to destroy the 'default' VM? [y/N] y
+==> default: Forcing shutdown of VM...
+==> default: Destroying VM and associated drives...
+```
