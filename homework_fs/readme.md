@@ -157,3 +157,14 @@ root@vagrant:~# lvs
   root   vgvagrant -wi-ao---- <62.54g
   swap_1 vgvagrant -wi-ao---- 980.00m
 ```  
+### 11. Создайте mkfs.ext4 ФС на получившемся LV.
+```
+root@vagrant:~# mkfs.ext4 /dev/vg1/lvol0
+mke2fs 1.45.5 (07-Jan-2020)
+Creating filesystem with 25600 4k blocks and 25600 inodes
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (1024 blocks): done
+Writing superblocks and filesystem accounting information: done
+```
