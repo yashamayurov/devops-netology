@@ -142,3 +142,8 @@ root@vagrant:~# pvcreate /dev/md0
 root@vagrant:~# pvcreate /dev/md1
   Physical volume "/dev/md1" successfully created.
 ```
+### 9. Создайте общую volume-group на этих двух PV.
+```
+root@vagrant:~# vgcreate vg1 /dev/md1 /dev/md0
+  Volume group "vg1" successfully created
+```
