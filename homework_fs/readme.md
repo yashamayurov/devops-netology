@@ -206,3 +206,9 @@ root@vagrant:~# gzip -t /tmp/new/test.gz
 root@vagrant:~# echo $?
 0
 ```
+### 16. Используя pvmove, переместите содержимое PV с RAID0 на RAID1
+```
+root@vagrant:~# pvmove -i1 /dev/md0 /dev/md1
+  /dev/md0: Moved: 16.00%
+  /dev/md0: Moved: 96.00%
+```
