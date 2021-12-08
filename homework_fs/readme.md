@@ -147,3 +147,13 @@ root@vagrant:~# pvcreate /dev/md1
 root@vagrant:~# vgcreate vg1 /dev/md1 /dev/md0
   Volume group "vg1" successfully created
 ```
+### 10. Создайте LV размером 100 Мб, указав его расположение на PV с RAID0.
+```
+root@vagrant:~# lvcreate -L 100M vg1 /dev/md0
+  Logical volume "lvol0" created.
+root@vagrant:~# lvs
+  LV     VG        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  lvol0  vg1       -wi-a----- 100.00m
+  root   vgvagrant -wi-ao---- <62.54g
+  swap_1 vgvagrant -wi-ao---- 980.00m
+```  
