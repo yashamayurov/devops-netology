@@ -168,3 +168,9 @@ Writing inode tables: done
 Creating journal (1024 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+### 12. Смонтируйте этот раздел в любую директорию, например, /tmp/new.
+```
+root@vagrant:~# mkdir /tmp/new
+root@vagrant:~# mount -v /dev/vg1/lvol0 /tmp/new
+mount: /dev/mapper/vg1-lvol0 mounted on /tmp/new.
+```
