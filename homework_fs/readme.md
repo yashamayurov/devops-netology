@@ -212,3 +212,4 @@ root@vagrant:~# pvmove -i1 /dev/md0 /dev/md1
   /dev/md0: Moved: 16.00%
   /dev/md0: Moved: 96.00%
 ```
+### 17.Сделайте --fail на устройство в вашем RAID1 md.
