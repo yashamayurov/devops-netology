@@ -222,9 +222,11 @@ root@vagrant:~# dmesg | grep raid1
 [18120.940682] md/raid1:md0: Disk failure on sdb1, disabling device.
                md/raid1:md0: Operation continuing on 1 devices.
 ### 19.Протестируйте целостность файла, несмотря на "сбойный" диск он должен продолжать быть доступен/
+```
 root@vagrant:~# gzip -t /tmp/new/test.gz
 root@vagrant:~# echo $?
 0
+```
 ### 20.Погасите тестовый хост, vagrant destroy.
 ```
 PS F:\vagrant> vagrant destroy
