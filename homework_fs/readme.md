@@ -199,3 +199,10 @@ sdc                    8:32   0  2.5G  0 disk
 └─sdc2                 8:34   0  511M  0 part
   └─md1                9:1    0 1018M  0 raid0
   ```
+  
+### 15. Протестируйте целостность файла
+```
+root@vagrant:~# gzip -t /tmp/new/test.gz
+root@vagrant:~# echo $?
+0
+```
