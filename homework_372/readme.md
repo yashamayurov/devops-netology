@@ -65,3 +65,4 @@ vagrant@vagrant:~$ ip address
     inet6 fe80::a00:27ff:fe73:60cf/64 scope link
        valid_lft forever preferred_lft forever
 ```
+### 2. Какой протокол используется для распознавания соседа по сетевому интерфейсу? Какой пакет и команды есть в Linux для этого?
