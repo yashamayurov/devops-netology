@@ -44,10 +44,9 @@ PS F:\vagrant> ipconfig
 Состояние интерфейсов:
 ```
 vagrant@vagrant:~$ ip link
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
-    link/ether 08:00:27:73:60:cf brd ff:ff:ff:ff:ff:ff
+vagrant@vagrant:~$ ip -c -br link
+lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP>
+eth0             UP             08:00:27:73:60:cf <BROADCAST,MULTICAST,UP,LOWER_UP>
 ```
 Просмотр адресов:
 ```
