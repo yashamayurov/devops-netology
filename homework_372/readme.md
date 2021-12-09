@@ -81,4 +81,38 @@ Interface:    eth0, via: LLDP, RID: 1, Time: 0 day, 00:04:51
 -------------------------------------------------------------------------------
 ```
 ### 3. Какая технология используется для разделения L2 коммутатора на несколько виртуальных сетей? Какой пакет и команды есть в Linux для этого? Приведите пример конфига.
-Ответ: используется технология VLAN.
+Ответ: используется технология VLAN. Для примера сделал настройку на имеющимся в распоряжении микрокомпьтере Raspberry Pi, покдлюченному к коммутатору L2+ DLing 1510-52, порт которого установлен в режим hybrid.
+Установка vlan:
+```
+root@raspberrypi:/home/pi# apt install vlan
+```
+Создаем конфиг, добавляем vlan300:
+```
+sudo nano /etc/network/interfaces.d/vlans
+auto eth0.300
+iface eth0.300 inet manual
+  vlan-raw-device eth0
+root@raspberrypi: reboot
+```
+Перезагрузка
+```
+root@raspberrypi:/home/pi# ip address
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether dc:a6:32:2a:b4:55 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.7/26 brd 192.168.1.63 scope global dynamic noprefixroute eth0
+       valid_lft 690772sec preferred_lft 604372sec
+    inet6 fe80::7940:33b8:ca96:54e7/64 scope link
+       valid_lft forever preferred_lft forever
+4: eth0.300@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether dc:a6:32:2a:b4:55 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.30.156/23 brd 192.168.31.255 scope global dynamic noprefixroute eth0.300
+       valid_lft 3177sec preferred_lft 2727sec
+    inet6 fe80::b88a:5da1:7d4f:fb86/64 scope link
+       valid_lft forever preferred_lft forever
+```
