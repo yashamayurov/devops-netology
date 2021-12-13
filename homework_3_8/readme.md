@@ -241,3 +241,4 @@ UNCONN            0                 0                            10.0.2.15%eth0:
 UNCONN            0                 0                                   0.0.0.0:sunrpc                              0.0.0.0:*                users:(("rpcbind",pid=554,fd=5),("systemd",pid=1,fd=36))
 UNCONN            0                 0                                      [::]:sunrpc                                 [::]:*                users:(("rpcbind",pid=554,fd=7),("systemd",pid=1,fd=38))
 ```
+#### 5. Используя diagrams.net, создайте L3 диаграмму вашей домашней сети или любой другой сети, с которой вы работали.
