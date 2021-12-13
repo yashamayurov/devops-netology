@@ -218,3 +218,4 @@ default via 10.0.2.2 dev eth0 proto dhcp src 10.0.2.15 metric 100
 10.0.2.2 dev eth0 proto dhcp scope link src 10.0.2.15 metric 100
 ```
 
+#### 3. Проверьте открытые TCP порты в Ubuntu, какие протоколы и приложения используют эти порты? Приведите несколько примеров
