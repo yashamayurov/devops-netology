@@ -181,3 +181,4 @@ Paths: (23 available, best #22, table default)
       rx pathid: 0, tx pathid: 0
       
 ```
+#### 2. Создайте dummy0 интерфейс в Ubuntu. Добавьте несколько статических маршрутов. Проверьте таблицу маршрутизации.
