@@ -15,6 +15,7 @@ Routing entry for 83.171.96.0/19
       Route tag 6939
       MPLS label: none
 ```
+
 ```
 route-views>show bgp 83.171.107.190
 BGP routing table entry for 83.171.96.0/19, version 1407109813
@@ -178,4 +179,5 @@ Paths: (23 available, best #22, table default)
       Community: 3257:8108 3257:30391 3257:50002 3257:51200 3257:51203
       path 7FE04C6A42F0 RPKI State valid
       rx pathid: 0, tx pathid: 0
-      ```
+      
+```
