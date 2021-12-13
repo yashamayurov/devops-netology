@@ -242,3 +242,10 @@ UNCONN            0                 0                                   0.0.0.0:
 UNCONN            0                 0                                      [::]:sunrpc                                 [::]:*                users:(("rpcbind",pid=554,fd=7),("systemd",pid=1,fd=38))
 ```
 #### 5. Используя diagrams.net, создайте L3 диаграмму вашей домашней сети или любой другой сети, с которой вы работали.
+Диаграмма в формате diagrams.net:
+
+https://github.com/yashamayurov/devops-netology/blob/main/homework_3_8/Network.drawio
+
+В формате картинки PNG:
+https://github.com/yashamayurov/devops-netology/blob/main/homework_3_8/Network.png
+
