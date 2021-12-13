@@ -231,3 +231,13 @@ LISTEN            0                  128                                     [::
 ```
 Порт 22 - SSH-сервер
 Порт 53 - DNS
+#### 4. Проверьте используемые UDP сокеты в Ubuntu, какие протоколы и приложения используют эти порты?
+
+```
+root@vagrant:~# ss -uap
+State             Recv-Q            Send-Q                        Local Address:Port                           Peer Address:Port            Process
+UNCONN            0                 0                             127.0.0.53%lo:domain                              0.0.0.0:*                users:(("systemd-resolve",pid=555,fd=12))
+UNCONN            0                 0                            10.0.2.15%eth0:bootpc                              0.0.0.0:*                users:(("systemd-network",pid=400,fd=19))
+UNCONN            0                 0                                   0.0.0.0:sunrpc                              0.0.0.0:*                users:(("rpcbind",pid=554,fd=5),("systemd",pid=1,fd=36))
+UNCONN            0                 0                                      [::]:sunrpc                                 [::]:*                users:(("rpcbind",pid=554,fd=7),("systemd",pid=1,fd=38))
+```
