@@ -182,3 +182,39 @@ Paths: (23 available, best #22, table default)
       
 ```
 #### 2. Создайте dummy0 интерфейс в Ubuntu. Добавьте несколько статических маршрутов. Проверьте таблицу маршрутизации.
+Создание интерфейса:
+```
+root@vagrant:~# echo "dummy" >> /etc/modules
+root@vagrant:~# echo "options dummy numdummies=2" > /etc/modprobe.d/dummy.conf
+root@vagrant:~# nano /etc/network/interfaces
+```
+Содержимое /etc/network/interfaces
+```
+auto dummy0
+iface dummy0 inet static
+ address 10.2.2.2/32
+ pre-up ip link add dummy0 type dummy
+ post-down ip link del dummy0
+```
+Перезапуск сети:
+```
+root@vagrant:~# /etc/init.d/networking restart
+Restarting networking (via systemctl): networking.service.
+```
+Добавление маршрутов:
+```
+root@vagrant:~# ip route add 10.0.0.0/24 via 10.0.2.2
+root@vagrant:~# ip route add 10.0.1.0/24 via 10.0.2.2
+root@vagrant:~# ip route add 10.0.1.0/27 via 10.0.2.15
+```
+Просмотр таблицы маршрутизации:
+```
+root@vagrant:~# ip route show
+default via 10.0.2.2 dev eth0 proto dhcp src 10.0.2.15 metric 100
+10.0.0.0/24 via 10.0.2.2 dev eth0
+10.0.1.0/27 via 10.0.2.15 dev eth0
+10.0.1.0/24 via 10.0.2.2 dev eth0
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15
+10.0.2.2 dev eth0 proto dhcp scope link src 10.0.2.15 metric 100
+```
+
