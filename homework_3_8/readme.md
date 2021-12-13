@@ -201,7 +201,7 @@ iface dummy0 inet static
 root@vagrant:~# /etc/init.d/networking restart
 Restarting networking (via systemctl): networking.service.
 ```
-Добавление маршрутов:
+Добавление временных маршрутов:
 ```
 root@vagrant:~# ip route add 10.0.0.0/24 via 10.0.2.2
 root@vagrant:~# ip route add 10.0.1.0/24 via 10.0.2.2
