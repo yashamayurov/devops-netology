@@ -354,8 +354,10 @@ Last login: Tue Dec 14 18:30:30 2021 from 192.168.1.33
 # Переименовываем файл закрытого ключа:
 vagrant@vagrant:~$ cd /home/vagrant/.ssh/
 vagrant@vagrant:~/.ssh$ mv id_rsa id_rsa_test
+
 # Создаем конфиг SSH 
 vagrant@vagrant:~/.ssh$ touch ~/.ssh/config && chmod 600 ~/.ssh/config
+
 # Вносим правки в конфиг:
 vagrant@vagrant:~/.ssh$ nano config
 ##################################
@@ -364,6 +366,7 @@ Host server2
  IdentityFile ~/.ssh/id_rsa_test
  User vagrant
 ##################################
+
 # Покдлючаемся по имени сервера:
 vagrant@vagrant:~/.ssh$ ssh server2
 Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-80-generic x86_64)
