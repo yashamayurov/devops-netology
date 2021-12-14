@@ -349,3 +349,39 @@ This system is built by the Bento project by Chef Software
 More information can be found at https://github.com/chef/bento
 Last login: Tue Dec 14 18:30:30 2021 from 192.168.1.33
 ```
+#### 6. Переименуйте файлы ключей из задания 5. Настройте файл конфигурации SSH клиента, так чтобы вход на удаленный сервер осуществлялся по имени сервера.
+```
+# Переименовываем файл закрытого ключа:
+vagrant@vagrant:~$ cd /home/vagrant/.ssh/
+vagrant@vagrant:~/.ssh$ mv id_rsa id_rsa_test
+# Создаем конфиг SSH 
+vagrant@vagrant:~/.ssh$ touch ~/.ssh/config && chmod 600 ~/.ssh/config
+# Вносим правки в конфиг:
+vagrant@vagrant:~/.ssh$ nano config
+##################################
+Host server2
+ HostName 192.168.1.32
+ IdentityFile ~/.ssh/id_rsa_test
+ User vagrant
+##################################
+# Покдлючаемся по имени сервера:
+vagrant@vagrant:~/.ssh$ ssh server2
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-80-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue 14 Dec 2021 06:55:41 PM UTC
+
+  System load:  0.08              Processes:             112
+  Usage of /:   2.5% of 61.31GB   Users logged in:       1
+  Memory usage: 21%               IPv4 address for eth0: 10.0.2.15
+  Swap usage:   0%                IPv4 address for eth1: 192.168.1.32
+
+
+This system is built by the Bento project by Chef Software
+More information can be found at https://github.com/chef/bento
+Last login: Tue Dec 14 18:51:40 2021 from 192.168.1.33
+
+```
