@@ -388,3 +388,11 @@ More information can be found at https://github.com/chef/bento
 Last login: Tue Dec 14 18:51:40 2021 from 192.168.1.33
 
 ```
+```
+#### 7. Соберите дамп трафика утилитой tcpdump в формате pcap, 100 пакетов. Откройте файл pcap в Wireshark.
+# Запускаем tcpdump
+root@vagrant:/home/vagrant# tcpdump -w 0001.pcap -c 100 -i eth1
+```
+
+Сриншот WireShark, в котором открыт файл:
+![image](https://user-images.githubusercontent.com/64410504/146063240-4d385868-fa4c-4a84-b053-7615dc26728b.png)
