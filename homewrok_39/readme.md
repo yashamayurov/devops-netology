@@ -287,3 +287,65 @@ TLSv1.3
 
  Done 2021-12-14 11:14:46 [  75s] -->> 95.54.192.106:443 (vks.mood51.ru) <<--
 ```
+#### 5. Установите на Ubuntu ssh сервер, сгенерируйте новый приватный ключ. Скопируйте свой публичный ключ на другой сервер. Подключитесь к серверу по SSH-ключу.
+```
+# Установка SSH-сервера
+vagrant@vagrant:~$ sudo apt-get install openssh-server
+# Генерация ключей 
+vagrant@vagrant:~$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/vagrant/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/vagrant/.ssh/id_rsa
+Your public key has been saved in /home/vagrant/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:9JvnA8LVCRSBPwNlzNaTlm7V4xMIfvccawkmHQ7rf2k vagrant@vagrant
+The key's randomart image is:
++---[RSA 3072]----+
+|         ***.+.. |
+|        o.* @.oo.|
+|        .+ O X.oo|
+|       . .* O o+=|
+|       .S..=   ++|
+|        o .o. . .|
+|         .o... E |
+|           o. o  |
+|            ..   |
++----[SHA256]-----+
+
+# Копируем открытый ключ на другой сервер:
+vagrant@vagrant:~$ ssh-copy-id vagrant@192.168.1.32
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/vagrant/.ssh/id_rsa.pub"
+The authenticity of host '192.168.1.32 (192.168.1.32)' can't be established.
+ECDSA key fingerprint is SHA256:wSHl+h4vAtTT7mbkj2lbGyxWXWTUf6VUliwpncjwLPM.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+vagrant@192.168.1.32's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'vagrant@192.168.1.32'"
+and check to make sure that only the key(s) you wanted were added.
+
+#Подключаемся к другому серверу:
+vagrant@vagrant:~$ ssh vagrant@192.168.1.32
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.4.0-80-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue 14 Dec 2021 06:34:52 PM UTC
+
+  System load:  0.1               Processes:             113
+  Usage of /:   2.5% of 61.31GB   Users logged in:       1
+  Memory usage: 21%               IPv4 address for eth0: 10.0.2.15
+  Swap usage:   0%                IPv4 address for eth1: 192.168.1.32
+
+
+This system is built by the Bento project by Chef Software
+More information can be found at https://github.com/chef/bento
+Last login: Tue Dec 14 18:30:30 2021 from 192.168.1.33
+```
