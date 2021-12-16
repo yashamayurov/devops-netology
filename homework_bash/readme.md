@@ -54,7 +54,7 @@ do
                 url="http://"${ip[$j]};                         # Формируем URL
                 curl $url;                                      # Проверяем URL
                 r=$?                                            # Записываем результат в переменную
-                echo "curl" $url $r #>> curl.log                # Записываем результат в лог
+                echo "curl" $url $r >> curl.log                # Записываем результат в лог
                 done
         done
 done
