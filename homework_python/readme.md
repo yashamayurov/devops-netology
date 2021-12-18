@@ -103,7 +103,21 @@ README.md
 
 ### Ваш скрипт:
 ```python
-???
+import socket   # Модуль для работы с сетью
+import copy     # Модуль, необходимы для полного копирования словаря
+
+hostlist1 = dict.fromkeys(["drive.google.com", "mail.google.com", "google.com"])  # Объявляем словарь со списком DNS-имен, в качестве ключей
+hostlist2 = {}                                                                    # Объявляем пустой словарь              
+while True:                                         # Бесконечный цикл                                 
+    for dnsName in hostlist1:                          # Перебор элементов словаря           
+        ip = socket.gethostbyname(dnsName)             # Разрешаем DNS имя
+        hostlist1[dnsName] = ip                        # Присваиваем элементу словаря значение IP-адреса
+        if hostlist2:                                  # Проверям присваивались ли значения в словарь hostlist2 - при первом проходе цикла словари hostlist1 и hostlist2 различаются и это не ошибка
+            if hostlist1[dnsName]!=hostlist2[dnsName]: # Если значения IP-разные выводим сообщение об ошибке
+                print(f'Erorr!!! {dnsName} changed from {hostlist2[dnsName]} to {hostlist1[dnsName]}')
+            else:                                      # Если значения одинаковые -  
+                print(f'{dnsName} is {ip}')            # Выводим пару DNS-имя - IP-адрес
+    hostlist2 = copy.deepcopy(hostlist1)               # Копируем словарь для сравнения при в следующей итерации цикла
 ```
 
 ### Вывод скрипта при запуске при тестировании:
