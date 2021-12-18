@@ -72,12 +72,30 @@ README.md
 
 ### Ваш скрипт:
 ```python
-???
+#!/usr/bin/env python3
+
+import os
+import sys                          #Для выполнения задания необходимы функции модкля sys
+      
+curPath = sys.argv[1]                                               #Записывваем в переменную путь, передаваемый в качестве параметра запуска
+bash_command = [f'cd {curPath}', "git status"]                      #Формируем команду перехода в папку
+result_os = os.popen(' && '.join(bash_command)).read()
+print(f'Local repository in directory {curPath}\nModified files:')  #Выводим путь к локальному репозиторию
+is_change = False
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(prepare_result)
+        break
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+user@user-VirtualBox:~$ /bin/python3 /home/user/netology/sysadm-homeworks/homework_python_1.py /home/user/netology/sysadm-homeworks
+/home/user/netology/sysadm-homeworks
+Local repository in directory /home/user/netology/sysadm-homeworks
+Modified files:
+README.md
 ```
 
 ## Обязательная задача 4
