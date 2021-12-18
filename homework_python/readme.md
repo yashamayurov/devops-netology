@@ -108,7 +108,23 @@ README.md
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+C:/Users/iasha/AppData/Local/Programs/Python/Python310/python.exe c:/Users/iasha/homework/python/4.py    
+drive.google.com is 10.10.10.13
+mail.google.com is 64.233.165.18
+google.com is 64.233.165.138    
+drive.google.com is 10.10.10.13
+mail.google.com is 64.233.165.18
+google.com is 64.233.165.138
+Erorr!!! drive.google.com changed from 10.10.10.13 to 10.10.10.14
+mail.google.com is 64.233.165.18
+google.com is 64.233.165.138
+drive.google.com is 10.10.10.14
+mail.google.com is 64.233.165.18
+google.com is 64.233.165.138
+Traceback (most recent call last):
+  File "c:\Users\iasha\homework\python\4.py", line 8, in <module>
+    time.sleep(3)
+KeyboardInterrupt
 ```
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
