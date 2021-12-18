@@ -43,12 +43,28 @@ for result in result_os.split('\n'):
 
 ### Ваш скрипт:
 ```python
-???
+#!/usr/bin/env python3
+
+#Насколько понял задание, что скрипт запускатеся в папке репозитория
+import os
+curPath = os.path.dirname(os.path.realpath(__file__))               #Записывваем в переменную путь нахождения скрипта
+bash_command = [f'cd {curPath}', "git status"]                      #Формируем команду перехода в папку
+result_os = os.popen(' && '.join(bash_command)).read()
+print(f'Local repository in directory {curPath}\nModified files:')  #Выводим путь к локальному репозиторию
+is_change = False
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(prepare_result)
+        break
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+user@user-VirtualBox:~$ /bin/python3 /home/user/netology/sysadm-homeworks/homework_python_1.py
+Local repository in directory /home/user/netology/sysadm-homeworks
+Modified files:
+README.md
 ```
 
 ## Обязательная задача 3
