@@ -30,22 +30,76 @@
 
 ### Ваш скрипт:
 ```python
-???
+import socket   # Модуль для работы с сетью
+import json     # Модуль для работы с json
+import yaml     # Модуль для работы с yaml
+import copy     # Модуль, необходимы для полного копирования словаря
+
+
+
+hostlist1 = dict.fromkeys(["drive.google.com", "mail.google.com", "google.com"])  # Объявляем словарь со списком DNS-имен, в качестве ключей
+hostlist2 = {}
+serviceList = []                # Список сервисов
+
+
+
+while True:                                         # Бесконечный цикл                                 
+    
+    for dnsName in hostlist1:                          # Перебор элементов словаря           
+        ip = socket.gethostbyname(dnsName)             # Разрешаем DNS имя
+        hostlist1[dnsName] = ip                        # Присваиваем элементу словаря значение IP-адреса
+        dns_ip = {dnsName:ip}                       # Формируем словарь словарь из одной пары DNSname: ip-address
+        serviceList.append(dns_ip)                  # Добавляем в список словарь
+        if hostlist2:                                  # Проверям присваивались ли значения в словарь hostlist2 
+                                                       #- при первом проходе цикла словари hostlist1 и hostlist2 различаются и это не ошибка
+            if hostlist1[dnsName]!=hostlist2[dnsName]: # Если значения IP-разные выводим сообщение об ошибке
+                print(f'Erorr!!! {dnsName} changed from {hostlist2[dnsName]} to {hostlist1[dnsName]}')
+            else:                                      # Если значения одинаковые -  
+                print(f'{dnsName} is {ip}')            # Выводим пару DNS-имя - IP-адрес
+    hostlist2 = copy.deepcopy(hostlist1)               # Копируем словарь для сравнения при в следующей итерации цикла
+    service = dict(services=serviceList)               # Создаем словарь с видом "services: Список словарей"
+
+    with open('F:\\nettology\\Python\\services.json', 'w') as jsonfile:  # Записываем json
+        json.dump(service, jsonfile)
+    with open('F:\\nettology\\Python\\services.yaml', 'w') as yamlfile:     # Записываем yaml
+        yaml.dump(service, yamlfile)
+    serviceList = []
+
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+C:/Users/iasha/AppData/Local/Programs/Python/Python310/python.exe c:/Users/iasha/homework/python/4.py    
+drive.google.com is 10.10.10.13
+mail.google.com is 64.233.165.18
+google.com is 64.233.165.138    
+drive.google.com is 10.10.10.13
+mail.google.com is 64.233.165.18
+google.com is 64.233.165.138
+Erorr!!! drive.google.com changed from 10.10.10.13 to 10.10.10.14
+mail.google.com is 64.233.165.18
+google.com is 64.233.165.138
+drive.google.com is 10.10.10.14
+mail.google.com is 64.233.165.18
+google.com is 64.233.165.138
+Traceback (most recent call last):
+  File "c:\Users\iasha\homework\python\4.py", line 8, in <module>
+    time.sleep(3)
+KeyboardInterrupt
 ```
 
 ### json-файл(ы), который(е) записал ваш скрипт:
 ```json
-???
+{"services": [{"drive.google.com": "173.194.222.194"}, {"mail.google.com": "64.233.161.18"}, {"google.com": "173.194.222.101"}]}
 ```
 
 ### yml-файл(ы), который(е) записал ваш скрипт:
 ```yaml
-???
+services:
+- drive.google.com: 173.194.222.194
+- mail.google.com: 64.233.161.18
+- google.com: 173.194.222.101
+
 ```
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
