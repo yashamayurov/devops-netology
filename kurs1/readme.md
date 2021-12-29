@@ -30,7 +30,7 @@ Rule added (v6)
 1. Установите hashicorp vault ([инструкция по ссылке](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault)).
 
 Установлено. Результат проверки командой vault
-```bash
+```
 root@vagrant:/home/vagrant# vault
 Usage: vault <command> [args]
 
