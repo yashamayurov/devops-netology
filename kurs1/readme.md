@@ -1,15 +1,26 @@
 1. Создайте виртуальную машину Linux.
-2. Установите ufw и разрешите к этой машине сессии на порты 22 и 443, при этом трафик на интерфейсе localhost (lo) должен ходить свободно на все порты.
-3. Установите hashicorp vault ([инструкция по ссылке](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault)).
-4. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
-5. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.
-6. Установите nginx.
-7. По инструкции ([ссылка](https://nginx.org/en/docs/http/configuring_https_servers.html)) настройте nginx на https, используя ранее подготовленный сертификат:
+Выполнено
+3. Установите ufw и разрешите к этой машине сессии на порты 22 и 443, при этом трафик на интерфейсе localhost (lo) должен ходить свободно на все порты.
+```bash
+root@vagrant:/home/vagrant# apt install ufw
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+ufw is already the newest version (0.36-6).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+```
+ufw уже установлен
+
+1. Установите hashicorp vault ([инструкция по ссылке](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault)).
+5. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
+6. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.
+7. Установите nginx.
+8. По инструкции ([ссылка](https://nginx.org/en/docs/http/configuring_https_servers.html)) настройте nginx на https, используя ранее подготовленный сертификат:
   - можно использовать стандартную стартовую страницу nginx для демонстрации работы сервера;
   - можно использовать и другой html файл, сделанный вами;
-8. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.
-9. Создайте скрипт, который будет генерировать новый сертификат в vault:
+9. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.
+10. Создайте скрипт, который будет генерировать новый сертификат в vault:
   - генерируем новый сертификат так, чтобы не переписывать конфиг nginx;
   - перезапускаем nginx для применения нового сертификата.
-10. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.
+11. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.
 
