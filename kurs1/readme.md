@@ -8,9 +8,25 @@ Building dependency tree
 Reading state information... Done
 ufw is already the newest version (0.36-6).
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#ufw уже установлен
+#Проверяем статус ufw
+root@vagrant:/home/vagrant# ufw status
+Status: inactive
+# Активируем ufw
+root@vagrant:/home/vagrant# ufw enable
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+root@vagrant:/home/vagrant# ufw status
+Status: active
+# Разрешаем подключение по 22 порту (ssh):
+root@vagrant:/home/vagrant# ufw allow ssh
+Rule added
+Rule added (v6)
+# Разрешаем подключение по 443 порту:
+root@vagrant:/home/vagrant# ufw allow 443
+Rule added
+Rule added (v6)
 ```
-ufw уже установлен
-
 1. Установите hashicorp vault ([инструкция по ссылке](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault)).
 5. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
 6. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.
