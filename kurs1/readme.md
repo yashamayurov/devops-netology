@@ -28,6 +28,40 @@ Rule added
 Rule added (v6)
 ```
 1. Установите hashicorp vault ([инструкция по ссылке](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault)).
+
+Установлено. Результат проверки командой vault
+```bash
+root@vagrant:/home/vagrant# vault
+Usage: vault <command> [args]
+
+Common commands:
+    read        Read data and retrieves secrets
+    write       Write data, configuration, and secrets
+    delete      Delete secrets and configuration
+    list        List data or secrets
+    login       Authenticate locally
+    agent       Start a Vault agent
+    server      Start a Vault server
+    status      Print seal and HA status
+    unwrap      Unwrap a wrapped secret
+
+Other commands:
+    audit          Interact with audit devices
+    auth           Interact with auth methods
+    debug          Runs the debug command
+    kv             Interact with Vault's Key-Value storage
+    lease          Interact with leases
+    monitor        Stream log messages from a Vault server
+    namespace      Interact with namespaces
+    operator       Perform operator-specific tasks
+    path-help      Retrieve API help for paths
+    plugin         Interact with Vault plugins and catalog
+    policy         Interact with policies
+    print          Prints runtime configurations
+    secrets        Interact with secrets engines
+    ssh            Initiate an SSH session
+    token          Interact with tokens
+```
 5. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
 6. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.
 7. Установите nginx.
