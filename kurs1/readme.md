@@ -72,12 +72,31 @@ Other commands:
 ![image](https://user-images.githubusercontent.com/64410504/147849641-276b35a6-0f5f-42ce-942d-383912068fd1.png)
 
 9. Установите nginx.
-10. По инструкции ([ссылка](https://nginx.org/en/docs/http/configuring_https_servers.html)) настройте nginx на https, используя ранее подготовленный сертификат:
+
+Установлен. Проверка демона:
+```
+root@vagrant:~# systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sat 2022-01-01 12:15:30 UTC; 1min 5s ago
+       Docs: man:nginx(8)
+   Main PID: 17484 (nginx)
+      Tasks: 3 (limit: 1071)
+     Memory: 4.3M
+     CGroup: /system.slice/nginx.service
+             ├─17484 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+             ├─17485 nginx: worker process
+             └─17486 nginx: worker process
+
+Jan 01 12:15:30 vagrant systemd[1]: Starting A high performance web server and a reverse proxy server...
+Jan 01 12:15:30 vagrant systemd[1]: Started A high performance web server and a reverse proxy server.
+```
+11. По инструкции ([ссылка](https://nginx.org/en/docs/http/configuring_https_servers.html)) настройте nginx на https, используя ранее подготовленный сертификат:
   - можно использовать стандартную стартовую страницу nginx для демонстрации работы сервера;
   - можно использовать и другой html файл, сделанный вами;
-11. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.
-12. Создайте скрипт, который будет генерировать новый сертификат в vault:
+12. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.
+13. Создайте скрипт, который будет генерировать новый сертификат в vault:
   - генерируем новый сертификат так, чтобы не переписывать конфиг nginx;
   - перезапускаем nginx для применения нового сертификата.
-13. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.
+14. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.
 
