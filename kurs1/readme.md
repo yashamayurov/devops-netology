@@ -65,6 +65,12 @@ Other commands:
 5. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
 
 Центр сертификации создан. В качестве имени использовал имя из инструкции examle.com.
+Для использования с nginx сохраняю файл сертификаты и закрытый ключ в файлы при помощи команд:
+```bash
+root@vagrant:~# json_cert=`vault write -format=json pki_int/issue/example-dot-com common_name="test.example.com" ttl="720h"`    #присваиваем переменной вывод генерации сертификата в формате json
+root@vagrant:~# echo $json_cert|jq -r '.data.certificate'>test.example.com.crt      #Сохраняем файл сертификата при помощи утилиты jq
+root@vagrant:~# echo $json_cert|jq -r '.data.private_key'>test.example.com.key      #Сохраняем закрытый ключ в файл при помощи утилиты jq
+```
 
 7. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.
 Сертификат корневого центра установлен в доверенные в хостовой ОС Windows:
