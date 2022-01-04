@@ -1,7 +1,8 @@
 1. Создайте виртуальную машину Linux.
 
 Выполнено
-3. Установите ufw и разрешите к этой машине сессии на порты 22 и 443, при этом трафик на интерфейсе localhost (lo) должен ходить свободно на все порты.
+
+1. Установите ufw и разрешите к этой машине сессии на порты 22 и 443, при этом трафик на интерфейсе localhost (lo) должен ходить свободно на все порты.
 ```bash
 root@vagrant:/home/vagrant# apt install ufw
 Reading package lists... Done
@@ -63,7 +64,8 @@ Other commands:
     ssh            Initiate an SSH session
     token          Interact with tokens
 ```
-5. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
+
+1. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
 
 Vault запущен в DEV-режиме.
 Центр сертификации создан. В качестве имени использовал имя из инструкции examle.com.
@@ -74,12 +76,12 @@ root@vagrant:~# echo $json_cert|jq -r '.data.certificate'>test.example.com.crt  
 root@vagrant:~# echo $json_cert|jq -r '.data.private_key'>test.example.com.key      #Сохраняем закрытый ключ в файл при помощи утилиты jq
 ```
 
-7. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.
+1. Установите корневой сертификат созданного центра сертификации в доверенные в хостовой системе.
 Сертификат корневого центра установлен в доверенные в хостовой ОС Windows:
 
 ![image](https://user-images.githubusercontent.com/64410504/147849641-276b35a6-0f5f-42ce-942d-383912068fd1.png)
 
-9. Установите nginx.
+1. Установите nginx.
 
 Установлен. Проверка демона:
 ```
@@ -99,7 +101,8 @@ root@vagrant:~# systemctl status nginx
 Jan 01 12:15:30 vagrant systemd[1]: Starting A high performance web server and a reverse proxy server...
 Jan 01 12:15:30 vagrant systemd[1]: Started A high performance web server and a reverse proxy server.
 ```
-11. По инструкции ([ссылка](https://nginx.org/en/docs/http/configuring_https_servers.html)) настройте nginx на https, используя ранее подготовленный сертификат:
+
+1. По инструкции ([ссылка](https://nginx.org/en/docs/http/configuring_https_servers.html)) настройте nginx на https, используя ранее подготовленный сертификат:
   - можно использовать стандартную стартовую страницу nginx для демонстрации работы сервера;
   - можно использовать и другой html файл, сделанный вами;
 Для демонстрации использовал стартовую страницу nginx. Настройка:
@@ -126,13 +129,14 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 root@vagrant:~# systemctl restart nginx
 ```
-12. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.
+
+1. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.
 Для выполнения внес ссылку на test.example.com в файл hosts на хостовой машине. 
 
 Поскольку сертификат сайта выдан подчиненным корневому центру центру сертификации, сертификат промежуточного CA добавил в доверенные.
 ![image](https://user-images.githubusercontent.com/64410504/148042379-5e4b8937-0e81-4274-89ed-1b34ecaa887c.png)
 
-14. Создайте скрипт, который будет генерировать новый сертификат в vault:
+1. Создайте скрипт, который будет генерировать новый сертификат в vault:
   - генерируем новый сертификат так, чтобы не переписывать конфиг nginx;
   - перезапускаем nginx для применения нового сертификата.
 Используя выполняемые ранее команды создаю скрипт следующего содержания:
@@ -159,7 +163,7 @@ root@vagrant:# ./renew.sh
 
 
 
-15. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.
+1. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.
 Открываем файл crontab при помощи команды:
 ```bash
 root@vagrant:/vagrant# crontab -e
