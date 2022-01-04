@@ -133,5 +133,28 @@ root@vagrant:~# systemctl restart nginx
 14. Создайте скрипт, который будет генерировать новый сертификат в vault:
   - генерируем новый сертификат так, чтобы не переписывать конфиг nginx;
   - перезапускаем nginx для применения нового сертификата.
+Используя выполняемые ранее команды создаю скрипт следующего содержания:
+```bash
+json_cert=`vault write -format=json pki_int/issue/example-dot-com common_name="test.example.com" ttl="720h"`
+echo $json_cert|jq -r '.data.certificate'>/etc/nginx/ssl/test.example.com.crt
+echo $json_cert|jq -r '.data.private_key'>/etc/nginx/ssl/test.example.com.key
+systemctl restart nginx
+```
+Даем права на запуск файла, запускам файл
+```bash
+root@vagrant:/vagrant# chmod 755 renew.sh
+root@vagrant:/vagrant# ./renew.sh
+```
+Для проверки того, что требуемый результат достигнут просматриваем в браузере сертификаты до и после выполнения скрипта. Сравниваем серийные номера сертификатов, убеждаемся, что они отличаются:
+
+До выполнения скрипта:
+![image](https://user-images.githubusercontent.com/64410504/148049702-097cd7aa-74c8-49bf-af07-afd4449ae407.png)
+
+После выполнения скрипта:
+
+![image](https://user-images.githubusercontent.com/64410504/148049746-92051619-92f9-4981-9f26-68e4cf7c77a6.png)
+
+
+
 15. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.
 
