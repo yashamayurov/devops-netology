@@ -100,6 +100,30 @@ Jan 01 12:15:30 vagrant systemd[1]: Started A high performance web server and a 
 11. По инструкции ([ссылка](https://nginx.org/en/docs/http/configuring_https_servers.html)) настройте nginx на https, используя ранее подготовленный сертификат:
   - можно использовать стандартную стартовую страницу nginx для демонстрации работы сервера;
   - можно использовать и другой html файл, сделанный вами;
+Для демонстрации использовал стартовую страницу nginx. Настройка:
+```bash
+root@vagrant:~# mkdir /etc/nginx/ssl                        # Создаем папку для хранения файлов сертификатов и закрытых ключей
+root@vagrant:~# cp test.example.com.crt /etc/nginx/ssl      # Копируем файл сертификата
+root@vagrant:~# cp test.example.com.key /etc/nginx/ssl      # Копируем файл закрытого ключа
+```
+Вносим правки в конфиг сайта по умолчанию:
+```bash
+root@vagrant:~# nano /etc/nginx/sites-enabled/default
+```
+Расскоменнтируем и добавляем строчки с указанием на файлы сертификата и закрытого ключа:
+```
+        listen 443 ssl default_server;
+        server_name         test.example.com;
+        ssl_certificate     /etc/nginx/ssl/test.example.com.crt;
+        ssl_certificate_key /etc/nginx/ssl/test.example.com.key;
+```
+Сохраняем файл. Проверяем коррекность конфига. Перезапускаем nginx для применения изменений:
+```bash
+root@vagrant:~# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@vagrant:~# systemctl restart nginx
+```
 12. Откройте в браузере на хосте https адрес страницы, которую обслуживает сервер nginx.
 13. Создайте скрипт, который будет генерировать новый сертификат в vault:
   - генерируем новый сертификат так, чтобы не переписывать конфиг nginx;
