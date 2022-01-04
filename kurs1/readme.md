@@ -105,6 +105,7 @@ Jan 01 12:15:30 vagrant systemd[1]: Started A high performance web server and a 
 7. По инструкции ([ссылка](https://nginx.org/en/docs/http/configuring_https_servers.html)) настройте nginx на https, используя ранее подготовленный сертификат:
   - можно использовать стандартную стартовую страницу nginx для демонстрации работы сервера;
   - можно использовать и другой html файл, сделанный вами;
+
 Для демонстрации использовал стартовую страницу nginx. Настройка:
 ```bash
 root@vagrant:~# mkdir /etc/nginx/ssl                        # Создаем папку для хранения файлов сертификатов и закрытых ключей
@@ -139,6 +140,7 @@ root@vagrant:~# systemctl restart nginx
 9. Создайте скрипт, который будет генерировать новый сертификат в vault:
   - генерируем новый сертификат так, чтобы не переписывать конфиг nginx;
   - перезапускаем nginx для применения нового сертификата.
+
 Используя выполняемые ранее команды создаю скрипт следующего содержания:
 ```bash
 json_cert=`vault write -format=json pki_int/issue/example-dot-com common_name="test.example.com" ttl="720h"`
@@ -164,6 +166,7 @@ root@vagrant:# ./renew.sh
 
 
 10. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.
+
 Открываем файл crontab при помощи команды:
 ```bash
 root@vagrant:/vagrant# crontab -e
