@@ -28,6 +28,10 @@ IaaC позволяет создавать идентичные среды ра�
 Установить на личный компьютер:
 
 - VirtualBox
+```
+C:\Program Files\Oracle\VirtualBox>VBoxManage --version
+6.1.30r148432
+```
 - Vagrant
 - Ansible
 
