@@ -22,6 +22,44 @@ Hey, Netology
 ```
 Опубликуйте созданный форк в своем репозитории и предоставьте ответ в виде ссылки на https://hub.docker.com/username_repo.
 
+#### Решение:
+Для решения использовал виртуальную машину Ubuntu.
+Создаем директорию /opt/docker/mynginx, в которой создаем файл index.html с кодом, приведенным в заданиии и Dockerfile следущего содержания:
+```
+FROM nginx
+LABEL maintainer="yakov@mayurov.ru"
+COPY index.html /usr/share/nginx/html/index.html
+```
+Собираем образ Docker:
+```
+docker build -t yashamayurov/mynginx:v0.0.1 .
+```
+Запускам образ с пробросом 80 порта:
+```
+root@vagrant:/opt/docker/mynginx# docker run -p 80:80 yashamayurov/mynginx:v0.0.1
+```
+Проверяем ответа nginx
+```
+vagrant@vagrant:~$ curl localhost
+<html>
+<head>
+Hey, Netology
+</head>
+<body>
+<h1>I’m DevOps Engineer!</h1>
+</body>
+</html>
+```
+Авторизуемся на Dokerhub, отправляем образ в репозиторий:
+```
+root@vagrant:/opt/docker/mynginx# docker login --username yashamayurov
+root@vagrant:/opt/docker/mynginx# docker push yashamayurov/mynginx:v0.0.1
+```
+Ссылка на репозиторий:
+
+https://hub.docker.com/r/yashamayurov/mynginx
+
+
 ## Задача 2
 
 Посмотрите на сценарий ниже и ответьте на вопрос:
