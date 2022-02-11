@@ -92,11 +92,41 @@ https://hub.docker.com/r/yashamayurov/mynginx
 ## Задача 3
 
 - Запустите первый контейнер из образа ***centos*** c любым тэгом в фоновом режиме, подключив папку ```/data``` из текущей рабочей директории на хостовой машине в ```/data``` контейнера;
+```
+root@vagrant:/home/vagrant# mkdir data
+root@vagrant:/home/vagrant# docker pull centos
+root@vagrant:/home/vagrant# docker run -i -d -v $PWD/data:/data centos /bin/bash
+```
 - Запустите второй контейнер из образа ***debian*** в фоновом режиме, подключив папку ```/data``` из текущей рабочей директории на хостовой машине в ```/data``` контейнера;
-- Подключитесь к первому контейнеру с помощью ```docker exec``` и создайте текстовый файл любого содержания в ```/data```;
-- Добавьте еще один файл в папку ```/data``` на хостовой машине;
-- Подключитесь во второй контейнер и отобразите листинг и содержание файлов в ```/data``` контейнера.
 
+```
+root@vagrant:/home/vagrant# docker pull debian
+root@vagrant:/home/vagrant# docker run -i -d -v $PWD/data:/data debian /bin/bash
+```
+- Подключитесь к первому контейнеру с помощью ```docker exec``` и создайте текстовый файл любого содержания в ```/data```;
+```
+root@vagrant:/home/vagrant# docker exec -i 138d470ad769 /bin/bash
+cd /data
+echo text>test.txt
+exit 
+```
+- Добавьте еще один файл в папку ```/data``` на хостовой машине;
+```
+root@vagrant:/home/vagrant# cd data
+root@vagrant:/home/vagrant/data# echo test2>>text2.txt
+```
+- Подключитесь во второй контейнер и отобразите листинг и содержание файлов в ```/data``` контейнера.
+```
+root@vagrant:/home/vagrant/data# docker exec -i bc655e49bba1 /bin/bash
+cd /data
+ls
+text.txt
+text2.txt
+cat text.txt
+test
+cat text2.txt
+test2
+```
 ## Задача 4 (*)
 
 Воспроизвести практическую часть лекции самостоятельно.
