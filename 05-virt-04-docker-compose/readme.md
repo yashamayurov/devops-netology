@@ -117,9 +117,8 @@ placement_policy: {}
 
 Для получения зачета, вам необходимо предоставить:
 - Скриншот работающего веб-интерфейса Grafana с текущими метриками, как на примере ниже
-<p align="center">
-  <img width="1200" height="600" src="./assets/yc_02.png">
-</p>
+![image](https://user-images.githubusercontent.com/64410504/154933407-334c248c-0adb-433d-86cf-47e4ff931d16.png)
+
 
 ## Задача 4 (*)
 
