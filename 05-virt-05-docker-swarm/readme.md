@@ -37,7 +37,18 @@ sdwjzt074gfpg81xrhwt5zatw     node06.netology.yc   Ready     Active             
 Создать ваш первый, готовый к боевой эксплуатации кластер мониторинга, состоящий из стека микросервисов.
 
 Для получения зачета, вам необходимо предоставить скриншот из терминала (консоли), с выводом команды:
-
+```
+[root@node01 ~]# docker service ls
+ID             NAME                                MODE         REPLICAS   IMAGE                                          PORTS
+xucxtk9b6qjw   swarm_monitoring_alertmanager       replicated   1/1        stefanprodan/swarmprom-alertmanager:v0.14.0
+hmq61t1f466s   swarm_monitoring_caddy              replicated   1/1        stefanprodan/caddy:latest                      *:3000->3000/tcp, *:9090->9090/tcp, *:9093-9094->9093-9094/tcp
+xnn400dozd2e   swarm_monitoring_cadvisor           global       6/6        google/cadvisor:latest
+6hq4d6pb2sov   swarm_monitoring_dockerd-exporter   global       6/6        stefanprodan/caddy:latest
+989decco448i   swarm_monitoring_grafana            replicated   1/1        stefanprodan/swarmprom-grafana:5.3.4
+bk1h26uspwds   swarm_monitoring_node-exporter      global       6/6        stefanprodan/swarmprom-node-exporter:v0.16.0
+z728c2vf0y4z   swarm_monitoring_prometheus         replicated   1/1        stefanprodan/swarmprom-prometheus:v2.5.0
+i43agjqztflz   swarm_monitoring_unsee              replicated   1/1        cloudflare/unsee:v0.8.0
+```
 
 ## Задача 4 (*)
 
