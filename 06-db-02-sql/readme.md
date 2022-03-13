@@ -5,6 +5,42 @@
 
 Приведите получившуюся команду или docker-compose манифест.
 
+#### Ответ
+Для удобства выполнения следующих задач также также установил в контейне pgAdmin
+```yaml
+version: '3.7'
+services:
+  db:
+    image: postgres:12
+    container_name: pgsql-server
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+    volumes:
+      - database_data:/var/lib/postgresql/data
+      - database_backup:/var/lib/postgresql/backup
+  pgadmin:
+    image: dpage/pgadmin4:4.18
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: i@i.i
+      PGADMIN_DEFAULT_PASSWORD: qaz
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - 80:80
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    links:
+      - 'db:pgsql-server'
+volumes:
+  database_data:
+  pgadmin-data:
+  database_backup:
+```
+
 ## Задача 2
 
 В БД из задачи 1: 
