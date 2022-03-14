@@ -262,7 +262,14 @@ FROM clients c INNER JOIN ORDERS o	on c.заказ = o.id
 root@vagrant:~# docker exec -it 632989652e9d pg_dump test_db -h localhost -U postgres -f /var/lib/postgresql/backup/dump.sql
 ```
 Остановите контейнер с PostgreSQL (но не удаляйте volumes).
-
+```bash
+root@vagrant:~# docker ps
+CONTAINER ID   IMAGE                 COMMAND                  CREATED        STATUS        PORTS                                        NAMES
+6f8c81fd60eb   dpage/pgadmin4:4.18   "/entrypoint.sh"         22 hours ago   Up 22 hours   0.0.0.0:80->80/tcp, :::80->80/tcp, 443/tcp   postgres_pgadmin_1
+632989652e9d   postgres:12           "docker-entrypoint.s…"   22 hours ago   Up 22 hours   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp    pgsql-server
+root@vagrant:~# docker stop 632989652e9d
+632989652e9d
+```
 Поднимите новый пустой контейнер с PostgreSQL.
 
 Восстановите БД test_db в новом контейнере.
