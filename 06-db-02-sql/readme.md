@@ -271,8 +271,14 @@ root@vagrant:~# docker stop 632989652e9d
 632989652e9d
 ```
 Поднимите новый пустой контейнер с PostgreSQL.
-
+```bash
+# Новый контейнер Docker поднял с новым volume для базы данных (насколько понял задание) 
+root@vagrant:/vagrant/postgres# docker run -h pgsql-server2 -e POSTGRES_PASSWORD=postgres -v database_data:/var/lib/postgresql/data -v database_backup:/var/lib/postgresql/backup -p 5432:5432 963b1b753ca6
+```
 Восстановите БД test_db в новом контейнере.
-
+```bash
+root@vagrant:/vagrant/postgres# docker exec -it 86c65d982e08 createdb -U postgres test_db
+root@vagrant:/vagrant/postgres# docker exec -it 86c65d982e08 psql -U postgres -d test_db -f /var/lib/postgresql/backup/dump.sql
+```
 Приведите список операций, который вы применяли для бэкапа данных и восстановления. 
 
