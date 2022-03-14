@@ -117,23 +117,46 @@ WHERE table_name in (SELECT tablename
 ```
 - список пользователей с правами над таблицами test_db
 ```
- grantor  | grantee  | table_catalog | table_schema | table_name | privilege_type | is_grantable | with_hierarchy
-----------+----------+---------------+--------------+------------+----------------+--------------+----------------
- postgres | postgres | test_db       | public       | orders     | INSERT         | YES          | NO
- postgres | postgres | test_db       | public       | orders     | SELECT         | YES          | YES
- postgres | postgres | test_db       | public       | orders     | UPDATE         | YES          | NO
- postgres | postgres | test_db       | public       | orders     | DELETE         | YES          | NO
- postgres | postgres | test_db       | public       | orders     | TRUNCATE       | YES          | NO
- postgres | postgres | test_db       | public       | orders     | REFERENCES     | YES          | NO
- postgres | postgres | test_db       | public       | orders     | TRIGGER        | YES          | NO
- postgres | postgres | test_db       | public       | clients    | INSERT         | YES          | NO
- postgres | postgres | test_db       | public       | clients    | SELECT         | YES          | YES
- postgres | postgres | test_db       | public       | clients    | UPDATE         | YES          | NO
- postgres | postgres | test_db       | public       | clients    | DELETE         | YES          | NO
- postgres | postgres | test_db       | public       | clients    | TRUNCATE       | YES          | NO
- postgres | postgres | test_db       | public       | clients    | REFERENCES     | YES          | NO
- postgres | postgres | test_db       | public       | clients    | TRIGGER        | YES          | NO
-(14 rows)
+ grantor  |     grantee      | table_catalog | table_schema | table_name | privilege_type | is_grantable | with_hierarchy
+----------+------------------+---------------+--------------+------------+----------------+--------------+----------------
+ postgres | postgres         | test_db       | public       | orders     | INSERT         | YES          | NO
+ postgres | postgres         | test_db       | public       | orders     | SELECT         | YES          | YES
+ postgres | postgres         | test_db       | public       | orders     | UPDATE         | YES          | NO
+ postgres | postgres         | test_db       | public       | orders     | DELETE         | YES          | NO
+ postgres | postgres         | test_db       | public       | orders     | TRUNCATE       | YES          | NO
+ postgres | postgres         | test_db       | public       | orders     | REFERENCES     | YES          | NO
+ postgres | postgres         | test_db       | public       | orders     | TRIGGER        | YES          | NO
+ postgres | postgres         | test_db       | public       | clients    | INSERT         | YES          | NO
+ postgres | postgres         | test_db       | public       | clients    | SELECT         | YES          | YES
+ postgres | postgres         | test_db       | public       | clients    | UPDATE         | YES          | NO
+ postgres | postgres         | test_db       | public       | clients    | DELETE         | YES          | NO
+ postgres | postgres         | test_db       | public       | clients    | TRUNCATE       | YES          | NO
+ postgres | postgres         | test_db       | public       | clients    | REFERENCES     | YES          | NO
+ postgres | postgres         | test_db       | public       | clients    | TRIGGER        | YES          | NO
+ postgres | test-admin-user  | test_db       | public       | orders     | INSERT         | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | orders     | SELECT         | NO           | YES
+ postgres | test-admin-user  | test_db       | public       | orders     | UPDATE         | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | orders     | DELETE         | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | orders     | TRUNCATE       | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | orders     | REFERENCES     | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | orders     | TRIGGER        | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | clients    | INSERT         | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | clients    | SELECT         | NO           | YES
+ postgres | test-admin-user  | test_db       | public       | clients    | UPDATE         | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | clients    | DELETE         | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | clients    | TRUNCATE       | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | clients    | REFERENCES     | NO           | NO
+ postgres | test-admin-user  | test_db       | public       | clients    | TRIGGER        | NO           | NO
+ postgres | test-simple-user | test_db       | public       | orders     | INSERT         | NO           | NO
+ postgres | test-simple-user | test_db       | public       | orders     | SELECT         | NO           | YES
+ postgres | test-simple-user | test_db       | public       | orders     | UPDATE         | NO           | NO
+ postgres | test-simple-user | test_db       | public       | orders     | DELETE         | NO           | NO
+ postgres | test-simple-user | test_db       | public       | clients    | INSERT         | NO           | NO
+ postgres | test-simple-user | test_db       | public       | clients    | SELECT         | NO           | YES
+ postgres | test-simple-user | test_db       | public       | clients    | UPDATE         | NO           | NO
+ postgres | test-simple-user | test_db       | public       | clients    | DELETE         | NO           | NO
+(36 rows)
+
 ```
 ## Задача 3
 
