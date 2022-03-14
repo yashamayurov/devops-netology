@@ -223,7 +223,10 @@ UPDATE clients SET заказ = 4 WHERE clients.id = 2;
 UPDATE clients SET заказ = 5 WHERE clients.id = 3;
 ```
 Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод данного запроса.
- 
+```sql
+SELECT c.фамилия, o.Наименование, o.Цена
+FROM clients c INNER JOIN ORDERS o	on c.заказ = o.id
+```
 Подсказк - используйте директиву `UPDATE`.
 
 ## Задача 5
