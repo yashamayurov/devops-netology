@@ -116,7 +116,25 @@ WHERE table_name in (SELECT tablename
     					schemaname != 'information_schema')
 ```
 - список пользователей с правами над таблицами test_db
-
+```
+ grantor  | grantee  | table_catalog | table_schema | table_name | privilege_type | is_grantable | with_hierarchy
+----------+----------+---------------+--------------+------------+----------------+--------------+----------------
+ postgres | postgres | test_db       | public       | orders     | INSERT         | YES          | NO
+ postgres | postgres | test_db       | public       | orders     | SELECT         | YES          | YES
+ postgres | postgres | test_db       | public       | orders     | UPDATE         | YES          | NO
+ postgres | postgres | test_db       | public       | orders     | DELETE         | YES          | NO
+ postgres | postgres | test_db       | public       | orders     | TRUNCATE       | YES          | NO
+ postgres | postgres | test_db       | public       | orders     | REFERENCES     | YES          | NO
+ postgres | postgres | test_db       | public       | orders     | TRIGGER        | YES          | NO
+ postgres | postgres | test_db       | public       | clients    | INSERT         | YES          | NO
+ postgres | postgres | test_db       | public       | clients    | SELECT         | YES          | YES
+ postgres | postgres | test_db       | public       | clients    | UPDATE         | YES          | NO
+ postgres | postgres | test_db       | public       | clients    | DELETE         | YES          | NO
+ postgres | postgres | test_db       | public       | clients    | TRUNCATE       | YES          | NO
+ postgres | postgres | test_db       | public       | clients    | REFERENCES     | YES          | NO
+ postgres | postgres | test_db       | public       | clients    | TRIGGER        | YES          | NO
+(14 rows)
+```
 ## Задача 3
 
 Используя SQL синтаксис - наполните таблицы следующими тестовыми данными:
