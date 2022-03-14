@@ -257,7 +257,10 @@ FROM clients c INNER JOIN ORDERS o	on c.заказ = o.id
 ## Задача 6
 
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. Задачу 1).
-
+```bash
+# Для выполнения использую утилиту pg_dump, которую запускаю внутри контейнера docker:
+root@vagrant:~# docker exec -it 632989652e9d pg_dump test_db -h localhost -U postgres -f /var/lib/postgresql/backup/dump.sql
+```
 Остановите контейнер с PostgreSQL (но не удаляйте volumes).
 
 Поднимите новый пустой контейнер с PostgreSQL.
