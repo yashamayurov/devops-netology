@@ -187,6 +187,22 @@ WHERE table_name in (SELECT tablename
 - приведите в ответе:
     - запросы 
     - результаты их выполнения.
+```sql
+
+SELECT COUNT(*) FROM ORDERS;	-- Количество записей в таблице ORDERS
+
+count
+-------
+     5
+(1 row)
+
+SELECT COUNT(*) FROM CLIENTS;	-- Количество записей в таблице CLIENTS
+
+count
+-------
+     5
+(1 row) 
+ ``` 
 
 ## Задача 4
 
