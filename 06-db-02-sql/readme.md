@@ -107,6 +107,14 @@ Foreign-key constraints:
     "fk_order" FOREIGN KEY ("заказ") REFERENCES orders(id)
 ```
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db
+```psql
+SELECT *
+FROM information_schema.table_privileges
+WHERE table_name in (SELECT tablename
+						FROM pg_catalog.pg_tables
+						WHERE schemaname != 'pg_catalog' AND 
+    					schemaname != 'information_schema')
+```
 - список пользователей с правами над таблицами test_db
 
 ## Задача 3
