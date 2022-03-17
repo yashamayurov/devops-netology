@@ -93,7 +93,7 @@ Server version:         8.0.28 MySQL Community Server - GPL
 
 ```
 Подключитесь к восстановленной БД и получите список таблиц из этой БД.
-```bash
+```
 mysql> USE test_db;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
@@ -108,7 +108,7 @@ mysql> show tables;
 1 row in set (0.00 sec)
 ```
 **Приведите в ответе** количество записей с `price` > 300.
-```sql
+```
 mysql> select count(*) from orders where price > 300;
 +----------+
 | count(*) |
