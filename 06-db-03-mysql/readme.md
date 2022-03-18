@@ -146,7 +146,21 @@ GRANT SELECT on test_db.* to 'test'
 ```
 Используя таблицу INFORMATION_SCHEMA.USER_ATTRIBUTES получите данные по пользователю `test` и 
 **приведите в ответе к задаче**.
+```
 
+SELECT *
+FROM INFORMATION_SCHEMA.USER_ATTRIBUTES
+WHERE USER = 'test';
+
++------+------+---------------------------------------+
+| USER | HOST | ATTRIBUTE                             |
++------+------+---------------------------------------+
+| test | %    | {"fname": "James", "lname": "Pretty"} |
++------+------+---------------------------------------+
+1 row in set (3.68 sec)
+
+
+```
 ## Задача 3
 
 Установите профилирование `SET profiling = 1`.
