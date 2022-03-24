@@ -95,6 +95,9 @@ DO INSTEAD INSERT INTO orders_2 VALUES(NEW.*)
 ## Задача 4
 
 Используя утилиту `pg_dump` создайте бекап БД `test_database`.
+```bash
+root@vagrant:/vagrant/postgres# pg_dump -h localhost -d test_database -U postgres >dump.sql
+```
 
 Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца `title` для таблиц `test_database`?
 
