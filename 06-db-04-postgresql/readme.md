@@ -71,9 +71,27 @@ LIMIT 1;
 провести разбиение таблицы на 2 (шардировать на orders_1 - price>499 и orders_2 - price<=499).
 
 Предложите SQL-транзакцию для проведения данной операции.
+```sql
+CREATE TABLE orders_1(
+	CHECK (price>499)
+) INHERITS (orders);
 
+CREATE TABLE orders_2(
+	CHECK (price<=499)
+) INHERITS (orders);
+
+CREATE RULE orders_insert_to_1 AS ON INSERT TO orders
+WHERE (price>499)
+DO INSTEAD INSERT INTO orders_1 VALUES(NEW.*);
+
+CREATE RULE orders_insert_to_2 AS ON INSERT TO orders
+WHERE (price<=499)
+DO INSTEAD INSERT INTO orders_2 VALUES(NEW.*)
+```
 Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?
-
+```
+Возможно при выполнении этих же запросов при создании такблицы
+```
 ## Задача 4
 
 Используя утилиту `pg_dump` создайте бекап БД `test_database`.
