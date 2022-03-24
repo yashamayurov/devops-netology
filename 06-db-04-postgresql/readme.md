@@ -102,7 +102,7 @@ root@vagrant:/vagrant/postgres# pg_dump -h localhost -d test_database -U postgre
 Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца `title` для таблиц `test_database`?
 
 ```sql
--- В описании столбца title инсрукции CREATE TABLE можно указать свойство UNIQUE
+-- В описании столбца title конструкции CREATE TABLE можно указать свойство UNIQUE
 
 CREATE TABLE public.orders (
     id integer NOT NULL,
