@@ -34,9 +34,13 @@
 Изучите [бэкап БД](https://github.com/netology-code/virt-homeworks/tree/master/06-db-04-postgresql/test_data).
 
 Восстановите бэкап БД в `test_database`.
-
+```bash
+root@vagrant:/vagrant/postgres# psql -h localhost -U postgres -d test_database -f test_dump.sql
+```
 Перейдите в управляющую консоль `psql` внутри контейнера.
-
+```bash
+root@vagrant:/vagrant/postgres# docker exec -it pgsql-server psql -U postgres
+```
 Подключитесь к восстановленной БД и проведите операцию ANALYZE для сбора статистики по таблице.
 
 Используя таблицу [pg_stats](https://postgrespro.ru/docs/postgresql/12/view-pg-stats), найдите столбец таблицы `orders` 
