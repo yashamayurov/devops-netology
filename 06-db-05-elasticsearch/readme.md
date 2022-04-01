@@ -24,7 +24,7 @@ node.name: netology_test
 
 В ответе приведите:
 - текст Dockerfile манифеста
-```
+```docker
 FROM centos:7
 LABEL maintainer="yakov@mayurov.ru"
 # По причине недоступности файлов elasticsearch с роосийских IP 
