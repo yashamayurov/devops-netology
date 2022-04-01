@@ -139,7 +139,19 @@ root@vagrant:~# curl -X DELETE "localhost:9200/ind-1?pretty"
 данную директорию как `snapshot repository` c именем `netology_backup`.
 
 **Приведите в ответе** запрос API и результат вызова API для создания репозитория.
-
+```bash
+root@vagrant:~# curl -X PUT "localhost:9200/_snapshot/netology_backup?pretty" -H 'Content-Type: application/json' -d'
+> {
+>   "type": "fs",
+>   "settings": {
+>     "location": "/elasticsearch-8.1.1/snapshots"
+>   }
+> }
+> '
+{
+  "acknowledged" : true
+}
+```
 Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
 
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
