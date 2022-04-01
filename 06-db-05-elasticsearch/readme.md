@@ -29,17 +29,20 @@ FROM centos:7
 LABEL maintainer="yakov@mayurov.ru"
 # По причине недоступности файлов elasticsearch с роосийских IP 
 # установил nginx на вирутальной машине и разместил файлы
-ARG URL_TARGZ=http://192.168.1.18/elasticsearch-8.1.1-linux-x86_64.tar.gz
-ARG URL_SHA=http://192.168.1.18/elasticsearch-8.1.1-linux-x86_64.tar.gz.sha512
+ARG HTTP_URL=http://192.168.1.18/
+ARG TARGZ=elasticsearch-8.1.1-linux-x86_64.tar.gz
+ARG SHA=elasticsearch-8.1.1-linux-x86_64.tar.gz.sha512
+
 RUN adduser elastuser
 RUN yum install wget -y \
     && yum install perl-Digest-SHA -y \
-    && wget ${URL_TARGZ} ${URL_SHA} \
-    && shasum -a 512 -c elasticsearch-8.1.1-linux-x86_64.tar.gz.sha512 \
-    && tar -xzf elasticsearch-8.1.1-linux-x86_64.tar.gz \
+    && wget ${HTTP_URL}${TARGZ} ${HTTP_URL}${SHA} \
+    && shasum -a 512 -c ${SHA} \
+    && tar -xzf ${TARGZ} \
+    && rm ${TARGZ} ${SHA} \
     && cd /elasticsearch-8.1.1/ \
     && chmod -R 757 /elasticsearch-8.1.1 \
-    && chmod -R 757 /var/lib
+    && chmod -R 757 /var/lib     
 RUN echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 WORKDIR /elasticsearch-8.1.1
 EXPOSE 9200
