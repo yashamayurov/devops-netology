@@ -156,7 +156,11 @@ root@vagrant:~# curl -X PUT "localhost:9200/_snapshot/netology_backup?pretty" -H
 }
 ```
 Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
-
+```bash
+root@vagrant:~# curl 'localhost:9200/_cat/indices?v&pretty'
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test  jALvbqmXRjubnOeJGU6Yow   1   0          0            0       225b           225b
+```
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
 состояния кластера `elasticsearch`.
 
