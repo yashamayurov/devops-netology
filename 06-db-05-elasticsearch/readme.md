@@ -1,5 +1,3 @@
-# Домашнее задание к занятию "6.5. Elasticsearch"
-
 ## Задача 1
 
 В этом задании вы потренируетесь в:
@@ -16,13 +14,61 @@
 
 Требования к `elasticsearch.yml`:
 - данные `path` должны сохраняться в `/var/lib`
+```
+path.data: /var/lib
+```
 - имя ноды должно быть `netology_test`
+```
+node.name: netology_test
+```
 
 В ответе приведите:
 - текст Dockerfile манифеста
+```
+FROM centos:7
+LABEL maintainer="yakov@mayurov.ru"
+# По причине недоступности файлов elasticsearch с роосийских IP 
+# установил nginx на вирутальной машине и разместил файлы
+ARG URL_TARGZ=http://192.168.1.18/elasticsearch-8.1.1-linux-x86_64.tar.gz
+ARG URL_SHA=http://192.168.1.18/elasticsearch-8.1.1-linux-x86_64.tar.gz.sha512
+RUN adduser elastuser
+RUN yum install wget -y \
+    && yum install perl-Digest-SHA -y \
+    && wget ${URL_TARGZ} ${URL_SHA} \
+    && shasum -a 512 -c elasticsearch-8.1.1-linux-x86_64.tar.gz.sha512 \
+    && tar -xzf elasticsearch-8.1.1-linux-x86_64.tar.gz \
+    && cd /elasticsearch-8.1.1/ \
+    && chmod -R 757 /elasticsearch-8.1.1 \
+    && chmod -R 757 /var/lib
+RUN echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+WORKDIR /elasticsearch-8.1.1
+EXPOSE 9200
+COPY elasticsearch.yml /elasticsearch-8.1.1/config
+USER elastuser
+CMD ./bin/elasticsearch
+```
 - ссылку на образ в репозитории dockerhub
+https://hub.docker.com/r/yashamayurov/myelast
 - ответ `elasticsearch` на запрос пути `/` в json виде
-
+```json
+{
+  "name" : "netology_test",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "8S6mhIBOTyC3hpvhXTYYMg",
+  "version" : {
+    "number" : "8.1.1",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "d0925dd6f22e07b935750420a3155db6e5c58381",
+    "build_date" : "2022-03-17T22:01:32.658689558Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.0.0",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 
 Далее мы будем работать с данным экземпляром elasticsearch.
