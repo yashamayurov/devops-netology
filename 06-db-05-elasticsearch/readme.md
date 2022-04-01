@@ -108,7 +108,20 @@ root@vagrant:~# curl localhost:9200/_cat/health
 Полагаю, что причина в том, что в описании индексов имеются реплики, но elasticsearch запущен в одиночном режиме
 ```
 Удалите все индексы.
-
+```bash
+root@vagrant:~# curl -X DELETE "localhost:9200/ind-3?pretty"
+{
+  "acknowledged" : true
+}
+root@vagrant:~# curl -X DELETE "localhost:9200/ind-2?pretty"
+{
+  "acknowledged" : true
+}
+root@vagrant:~# curl -X DELETE "localhost:9200/ind-1?pretty"
+{
+  "acknowledged" : true
+}
+```
 **Важно**
 
 При проектировании кластера elasticsearch нужно корректно рассчитывать количество реплик и шард,
