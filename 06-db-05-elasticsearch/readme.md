@@ -99,7 +99,10 @@ yellow open   ind-2 oIxSgiuCSGaw2Ekx14KA7w   2   1          0            0      
 ```
 
 Получите состояние кластера `elasticsearch`, используя API.
-
+```
+root@vagrant:~# curl localhost:9200/_cat/health
+1648809645 10:40:45 elasticsearch yellow 1 1 8 8 0 0 10 0 - 44.4%
+```
 Как вы думаете, почему часть индексов и кластер находится в состоянии yellow?
 
 Удалите все индексы.
