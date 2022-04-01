@@ -90,6 +90,13 @@ https://hub.docker.com/r/yashamayurov/myelast
 | ind-3 | 2 | 4 |
 
 Получите список индексов и их статусов, используя API и **приведите в ответе** на задание.
+```
+root@vagrant:~# curl 'localhost:9200/_cat/indices?v&pretty'
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   ind-1 X16-_VYtTB2QK2PTDRm-9A   1   0          0            0       225b           225b
+yellow open   ind-3 FBQUKUOqQciwJGdGoeMYCA   4   2          0            0       900b           900b
+yellow open   ind-2 oIxSgiuCSGaw2Ekx14KA7w   2   1          0            0       450b           450b
+```
 
 Получите состояние кластера `elasticsearch`, используя API.
 
