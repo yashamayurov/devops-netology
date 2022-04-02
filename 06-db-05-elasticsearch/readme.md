@@ -164,7 +164,7 @@ green  open   test  jALvbqmXRjubnOeJGU6Yow   1   0          0            0      
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
 состояния кластера `elasticsearch`.
 ```bash
-curl -X PUT "http://192.168.1.18:9200/_snapshot/netology_backup/%3Cmy_snapshot_%7Bnow%2Fd%7D%3E?pretty"'
+curl -X PUT "http://localhost:9200/_snapshot/netology_backup/%3Cmy_snapshot_%7Bnow%2Fd%7D%3E?pretty"'
 HTTP/1.1 200 OK
 X-elastic-product: Elasticsearch
 content-type: application/json
@@ -198,7 +198,7 @@ yellow open   test2 xhZgXAXmQy-zS_ofCukIaA   2   1          0            0      
 
 **Приведите в ответе** запрос к API восстановления и итоговый список индексов.
 ```
-curl -X POST "http://192.168.1.18:9200/_snapshot/netology_backup/my_snapshot_2022.04.02/_restore?pretty"
+curl -X POST "http://localhost:9200/_snapshot/netology_backup/my_snapshot_2022.04.02/_restore?pretty"
 
 
 curl 'localhost:9200/_cat/indices?v&pretty'
