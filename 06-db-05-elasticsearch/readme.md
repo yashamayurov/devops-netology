@@ -188,7 +188,11 @@ drwxr-xr-x 4 elastuser elastuser  4096 Apr  2 18:59 indices
 -rw-r--r-- 1 elastuser elastuser   363 Apr  2 18:59 snap-8Y_offk8SZ2atSjqW2r2TA.dat
 ```
 Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
-
+```bash
+root@vagrant:~# curl 'localhost:9200/_cat/indices?v&pretty'
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   test2 xhZgXAXmQy-zS_ofCukIaA   2   1          0            0       450b           450b
+```
 [Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
 кластера `elasticsearch` из `snapshot`, созданного ранее. 
 
