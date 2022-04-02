@@ -163,9 +163,24 @@ green  open   test  jALvbqmXRjubnOeJGU6Yow   1   0          0            0      
 ```
 [Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
 состояния кластера `elasticsearch`.
+```bash
+curl -X PUT "http://192.168.1.18:9200/_snapshot/netology_backup/%3Cmy_snapshot_%7Bnow%2Fd%7D%3E?pretty"'
+HTTP/1.1 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-encoding: gzip
+content-length: 50
 
+{
+  "accepted": true
+}
+```
 **Приведите в ответе** список файлов в директории со `snapshot`ами.
-
+```bash
+root@vagrant:~# docker exec -i -t bc507330a916 ls /elasticsearch-8.1.1/snapshots
+index-0       indices                          snap-8Y_offk8SZ2atSjqW2r2TA.dat
+index.latest  meta-8Y_offk8SZ2atSjqW2r2TA.dat
+```
 Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
 
 [Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
