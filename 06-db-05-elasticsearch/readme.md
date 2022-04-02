@@ -177,9 +177,15 @@ content-length: 50
 ```
 **Приведите в ответе** список файлов в директории со `snapshot`ами.
 ```bash
-root@vagrant:~# docker exec -i -t bc507330a916 ls /elasticsearch-8.1.1/snapshots
-index-0       indices                          snap-8Y_offk8SZ2atSjqW2r2TA.dat
-index.latest  meta-8Y_offk8SZ2atSjqW2r2TA.dat
+root@vagrant:~# docker exec -i -t bc507330a916 ls -la /elasticsearch-8.1.1/snapshots
+total 48
+drwxr-xr-x 3 elastuser elastuser  4096 Apr  2 18:59 .
+drwxr-xrwx 1 root      root       4096 Apr  1 13:03 ..
+-rw-r--r-- 1 elastuser elastuser   855 Apr  2 18:59 index-0
+-rw-r--r-- 1 elastuser elastuser     8 Apr  2 18:59 index.latest
+drwxr-xr-x 4 elastuser elastuser  4096 Apr  2 18:59 indices
+-rw-r--r-- 1 elastuser elastuser 18246 Apr  2 18:59 meta-8Y_offk8SZ2atSjqW2r2TA.dat
+-rw-r--r-- 1 elastuser elastuser   363 Apr  2 18:59 snap-8Y_offk8SZ2atSjqW2r2TA.dat
 ```
 Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
 
