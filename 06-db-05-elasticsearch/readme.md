@@ -197,14 +197,14 @@ yellow open   test2 xhZgXAXmQy-zS_ofCukIaA   2   1          0            0      
 кластера `elasticsearch` из `snapshot`, созданного ранее. 
 
 **Приведите в ответе** запрос к API восстановления и итоговый список индексов.
+```
+curl -X POST "http://192.168.1.18:9200/_snapshot/netology_backup/my_snapshot_2022.04.02/_restore?pretty"
 
+
+curl 'localhost:9200/_cat/indices?v&pretty'
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   test2 xhZgXAXmQy-zS_ofCukIaA   2   1          0            0       450b           450b
+green  open   test  gPscx3FXTWSbFilQcOeVQQ   1   0          0            0       225b           225b
+```
 Подсказки:
 - возможно вам понадобится доработать `elasticsearch.yml` в части директивы `path.repo` и перезапустить `elasticsearch`
-
----
-
-### Как cдавать задание
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
-
----
