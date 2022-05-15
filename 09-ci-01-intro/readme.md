@@ -1,3 +1,5 @@
 Не уверен, что все сделал правильно. Ссылки на выгруженные из Jira XML:
 
-[./myWorkflowBag.xml]
+[BAG](./myWorkflowBag.xml)
+
+[Task](./Other.xml)
