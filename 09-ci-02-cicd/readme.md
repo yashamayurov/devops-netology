@@ -9,9 +9,9 @@
 
 В репозиторий `maven-public`и не удалось загрузить, поскольку он является группой репозиторией, использовал репозиторий `maven-releases`.
 
-Ссылка на maven-metadata.xml
+Ссылка на [maven-metadata.xml](https://github.com/yashamayurov/devops-netology/blob/main/09-ci-02-cicd/maven-metadata.xml)
 
 ### Знакомство с Maven
 
 Возможно, что-то не понял, но артефакт нашел в директории target, которая создалась в директории pom.xml
-Ссылка на pom.xml
+Ссылка на [pom.xml](https://github.com/yashamayurov/devops-netology/blob/main/09-ci-02-cicd/pom.xml)
